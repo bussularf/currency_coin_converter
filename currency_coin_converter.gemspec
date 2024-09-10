@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Uma gem para conversão de moedas usando ExchangeRate-API."
   spec.description = "Esta gem permite converter valores entre diferentes moedas usando a API da ExchangeRate."
-  spec.homepage = 'https://github.com/bussularf/currency_converter'
+  spec.homepage = 'https://github.com/bussularf/currency_coin_converter'
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   # URL do projeto no GitHub
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = 'https://github.com/bussularf/currency_converter'
+  spec.metadata["source_code_uri"] = 'https://github.com/bussularf/currency_coin_converter'
 
   # Arquivos incluídos na gem
   spec.files = Dir.chdir(__dir__) do
