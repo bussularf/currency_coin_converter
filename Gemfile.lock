@@ -1,0 +1,30 @@
+PATH
+  remote: .
+  specs:
+    currency_converter (0.1.0)
+      httparty (~> 0.18)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.1.8)
+    csv (3.3.0)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    mini_mime (1.1.5)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
+    rake (13.2.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  currency_converter!
+  httparty
+  rake (~> 13.0)
+
+BUNDLED WITH
+   2.4.10
