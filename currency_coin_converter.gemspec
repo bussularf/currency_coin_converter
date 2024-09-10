@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/currency_converter/version"
+require_relative "lib/currency_coin_converter/version"
 
 Gem::Specification.new do |spec|
   spec.name = "currency_converter"
