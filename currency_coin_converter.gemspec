@@ -3,7 +3,7 @@
 require_relative "lib/currency_coin_converter/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "currency_converter"
+  spec.name = "currency_coin_converter"
   spec.version = CurrencyCoinConverter::VERSION
   spec.authors = ["Fernanda de Jesus"]
   spec.email = ["fernandabussular@gmail.com"]
