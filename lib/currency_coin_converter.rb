@@ -1,4 +1,4 @@
-require_relative 'currency_coin_converter/version'
+require 'currency_coin_converter/version'
 require 'httparty'
 
 module CurrencyCoinConverter
