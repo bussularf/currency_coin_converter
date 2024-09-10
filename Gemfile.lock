@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    currency_coin_converter (0.1.0)
+    currency_coin_converter (0.2.2)
       httparty (~> 0.18)
 
 GEM
