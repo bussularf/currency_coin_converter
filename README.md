@@ -6,9 +6,13 @@ Install the gem and add to the application's Gemfile by executing:
     $ bundle add currency_coin_converter
 
 Or add in your Gemfile 
-    `gem 'currency_coin_converter'`
+    ```
+    gem 'currency_coin_converter'
+    ```
 Run in console 
-    `bundle install`
+    ```
+    bundle install
+    ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
@@ -20,11 +24,15 @@ To use this gem, you need to set up an environment variable for the Exchange Rat
 ```bash
 export EXCHANGE_RATE_API_KEY='your_api_key_here'
 ```
+<br>
 
-`require 'currency_coin_converter'`
+In your main file you can use
+```
+require 'currency_coin_converter'
 
-`amount_in_euros = CurrencyCoinConverter.convert(100, from: "USD", to: "EUR")`
-`puts amount_in_euros`
+amount_in_euros = CurrencyCoinConverter.convert(100, from: "USD", to: "EUR")
+puts amount_in_euros
+```
 
 ## Contributing
 
