@@ -1,10 +1,11 @@
 require_relative './currency_coin_converter/version'
 require 'httparty'
+require 'dotenv/load'
 
 module CurrencyCoinConverter
   class Error < StandardError; end
 
-  API_URL = "https://v6.exchangerate-api.com/v6/943cde42b6f9a6628b0900ec/latest/"
+  API_URL = "https://v6.exchangerate-api.com/v6/#{ENV['EXCHANGE_RATE_API_KEY']}/latest/"
 
   def self.convert(amount, from:, to:)
     rates = fetch_rates(from)
