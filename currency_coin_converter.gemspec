@@ -4,13 +4,13 @@ require_relative "lib/currency_converter/version"
 
 Gem::Specification.new do |spec|
   spec.name = "currency_converter"
-  spec.version = CurrencyConverter::VERSION
+  spec.version = CurrencyCoinConverter::VERSION
   spec.authors = ["Fernanda de Jesus"]
   spec.email = ["fernandabussular@gmail.com"]
 
   spec.summary = "Uma gem para conversão de moedas usando ExchangeRate-API."
   spec.description = "Esta gem permite converter valores entre diferentes moedas usando a API da ExchangeRate."
-  spec.homepage = 'https://github.com/seu-usuario/currency_converter'
+  spec.homepage = 'https://github.com/bussularf/currency_converter'
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
@@ -18,17 +18,15 @@ Gem::Specification.new do |spec|
 
   # URL do projeto no GitHub
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = 'https://github.com/seu-usuario/currency_converter'
-
-  # Se você não tiver um CHANGELOG.md, pode remover ou comentar esta linha:
-  # spec.metadata["changelog_uri"] = "https://github.com/seu-usuario/currency_converter/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = 'https://github.com/bussularf/currency_converter'
 
   # Arquivos incluídos na gem
   spec.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |f|
-      (File.expand_path(f) == __FILE__) || f.start_with?(*%w[bin/ test/ spec/ features/ .git .circleci appveyor])
+      f.end_with?('currency_converter.gemspec') || f.end_with?('.gem')
     end
   end
+
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
