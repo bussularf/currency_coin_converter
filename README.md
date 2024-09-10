@@ -19,6 +19,7 @@ To use this gem, you need to set up an environment variable for the Exchange Rat
 
 ```bash
 export EXCHANGE_RATE_API_KEY='your_api_key_here'
+```
 
 `require 'currency_coin_converter'`
 
