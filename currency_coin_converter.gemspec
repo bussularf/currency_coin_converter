@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Fernanda de Jesus"]
   spec.email = ["fernandabussular@gmail.com"]
 
-  spec.summary = "Uma gem para conversão de moedas usando ExchangeRate-API."
-  spec.description = "Esta gem permite converter valores entre diferentes moedas usando a API da ExchangeRate."
+  spec.summary = "A gem for currency conversion using the ExchangeRate API."
+  spec.description = "This gem allows you to convert amounts between different currencies using the ExchangeRate API."
   spec.homepage = 'https://github.com/bussularf/currency_coin_converter'
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
