@@ -16,12 +16,12 @@ module CurrencyCoinConverter
     end
 
     def convert(amount, from:, to:, round: 2)
-      (amount * conversion_rate(from:, to:)).round(round)
+      (amount * conversion_rate(from: from, to: to)).round(round)
     end
 
     def conversion_rate(from:, to:)
       conversion_rate = conversion_rates(from)[to]
-      return conversion_rate unless conversion_rate.nil?
+      return conversion_rate if conversion_rate
 
       raise Error, "currency code is invalid: #{to}"
     end
@@ -64,11 +64,11 @@ module CurrencyCoinConverter
       end
 
       def convert(amount, from:, to:, round: 2)
-        instance.convert(amount, from:, to:, round: round)
+        instance.convert(amount, from: from, to: to, round: round)
       end
 
       def conversion_rate(from:, to:)
-        instance.conversion_rate(from:, to:)
+        instance.conversion_rate(from: from, to: to)
       end
 
       def conversion_rates(base_currency)
