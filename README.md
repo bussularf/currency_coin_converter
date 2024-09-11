@@ -19,10 +19,11 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install currency_coin_converter
 
 ## Usage
-To use this gem, you need to set up an environment variable for the Exchange Rate API key:
+To use this gem, you need to set up an initializer for the Exchange Rate API key:
 
-```bash
-export EXCHANGE_RATE_API_KEY='your_api_key_here'
+```rb
+# This should be placed before the application tries to get the exchange rate.
+CurrencyCoinConverter::Base.api_key = <your exchange rate api key>
 ```
 <br>
 
@@ -30,7 +31,7 @@ In your main file you can use
 ```
 require 'currency_coin_converter'
 
-amount_in_euros = CurrencyCoinConverter.convert(100, from: "USD", to: "EUR")
+amount_in_euros = CurrencyCoinConverter::Base.convert(100, from: "USD", to: "EUR", round: 3)
 puts amount_in_euros
 ```
 

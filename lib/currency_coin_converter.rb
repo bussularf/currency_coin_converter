@@ -1,29 +1,76 @@
-require_relative './currency_coin_converter/version'
-require 'httparty'
-require 'dotenv/load'
+require 'singleton'
 
 module CurrencyCoinConverter
+  VERSION = "0.3.0"
+
   class Error < StandardError; end
 
-  API_URL = "https://v6.exchangerate-api.com/v6/#{ENV['EXCHANGE_RATE_API_KEY']}/latest/"
+  class Base
+    include ::Singleton
 
-  def self.convert(amount, from:, to:)
-    rates = fetch_rates(from)
-    conversion_rate = rates[to]
-
-    if conversion_rate
-      (amount * conversion_rate).round(2)
-    else
-      raise "Conversão de #{from} para #{to} não encontrada."
+    def initialize
+      self.api_version = "v6"
     end
-  end
 
-  def self.fetch_rates(base_currency)
-    response = HTTParty.get("#{API_URL}/#{base_currency}")
-    if response.success?
-      response.parsed_response["conversion_rates"]
-    else
-      raise "Erro ao buscar taxas de câmbio."
+    def convert(amount, from:, to:, round: 2)
+      (amount * conversion_rate(from:, to:)).round(round)
+    end
+
+    def conversion_rate(from:, to:)
+      conversion_rate = conversion_rates(from)[to]
+      return conversion_rate unless conversion_rate.nil?
+
+      raise Error, "currency code is invalid: #{to}"
+    end
+
+    def conversion_rates(base_currency)
+      get(path: base_currency)["conversion_rates"]
+    end
+
+    attr_accessor :api_key
+    attr_reader :api_version
+
+    private
+
+    attr_writer :api_version
+
+    def get(path:)
+      raise Error, "api key should be present" if api_key.strip.empty?
+      raise Error, "api version should be present" if api_version.strip.empty?
+
+      uri = ::URI::HTTPS.build(host: "#{api_version}.exchangerate-api.com", path: "/#{api_version}/#{api_key}/latest/#{path}")
+      response = ::Net::HTTP.get_response(uri)
+      parsed_response = JSON.parse(response.body)
+
+      return parsed_response if response.is_a?(::Net::HTTPSuccess)
+
+      raise Error, "#{parsed_response["error-type"]}: could not complete the request."
+    end
+
+    class << self
+      def api_key
+        instance.api_key
+      end
+
+      def api_key=(api_key)
+        instance.api_key = api_key
+      end
+
+      def api_version
+        instance.api_version
+      end
+
+      def convert(amount, from:, to:, round: 2)
+        instance.convert(amount, from:, to:, round: round)
+      end
+
+      def conversion_rate(from:, to:)
+        instance.conversion_rate(from:, to:)
+      end
+
+      def conversion_rates(base_currency)
+        instance.conversion_rates(base_currency)
+      end
     end
   end
 end
