@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/currency_coin_converter/version"
+require_relative "lib/currency_coin_converter"
 
 Gem::Specification.new do |spec|
   spec.name = "currency_coin_converter"
@@ -30,7 +30,4 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-
-  # Dependências, se houver
-  spec.add_dependency "httparty", "~> 0.18"  # Exemplo de dependência para chamadas HTTP
 end
