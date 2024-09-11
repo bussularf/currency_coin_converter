@@ -1,4 +1,7 @@
+require 'json'
+require 'net/http'
 require 'singleton'
+require 'uri'
 
 module CurrencyCoinConverter
   VERSION = "0.3.0"
