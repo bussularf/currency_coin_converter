@@ -4,7 +4,7 @@ require 'singleton'
 require 'uri'
 
 module CurrencyCoinConverter
-  VERSION = "0.3.1"
+  VERSION = "0.3.3"
 
   class Error < StandardError; end
 
